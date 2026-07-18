@@ -3,9 +3,13 @@
 import Link from "next/link";
 import { SacramentMeeting } from "../lib/types";
 
-export default function MeetingCards({ meetings }: { meetings: SacramentMeeting[] }) {
+export default function MeetingCards({
+  meetings,
+}: {
+  meetings: SacramentMeeting[];
+}) {
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 mt-6">
       {meetings.map((meeting) => (
         <Link
           key={meeting.id}
@@ -17,10 +21,12 @@ export default function MeetingCards({ meetings }: { meetings: SacramentMeeting[
           </h3>
 
           <p className="text-gray-600 mb-1">
-            <span className="font-semibold">Presiding:</span> {meeting.presiding}
+            <span className="font-semibold">Presiding:</span>{" "}
+            {meeting.presiding}
           </p>
           <p className="text-gray-600 mb-1">
-            <span className="font-semibold">Conducting:</span> {meeting.conducting}
+            <span className="font-semibold">Conducting:</span>{" "}
+            {meeting.conducting}
           </p>
 
           <p className="text-gray-600 mb-1">
