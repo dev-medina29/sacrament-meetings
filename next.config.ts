@@ -1,7 +1,8 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
-  allowedDevOrigins: ["http://192.168.1.72:3000"],
+const nextConfig = {
+  // Add your LAN IP or custom dev host here
+  allowedDevOrigins: ["192.168.1.71"],
 };
 
-export default nextConfig;
+module.exports = nextConfig;
