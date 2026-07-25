@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Editing and Admin Meetings",
+  title: "Admin Meetings",
   description: "Editing and Admin Meetings section",
 };
 
