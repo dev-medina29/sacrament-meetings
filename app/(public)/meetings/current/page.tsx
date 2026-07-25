@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation";
 import { getMeetings } from "@/lib/meetings-db";
 
-export default function CurrentMeetingPage() {
+export default async function CurrentMeetingPage() {
   // Find the most recent Sunday (today if it's Sunday)
   const today = new Date();
   const dayOfWeek = today.getDay(); // 0=Sun, 1=Mon ... 6=Sat
@@ -14,7 +14,7 @@ export default function CurrentMeetingPage() {
   const dd = String(sunday.getDate()).padStart(2, "0");
   const dateStr = `${yyyy}-${mm}-${dd}`;
 
-  const meetings = getMeetings(dateStr);
+  const meetings = await getMeetings(dateStr);
 
   if (meetings.length === 0) {
     redirect("/meetings");

@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { getMeetings } from "@/lib/meetings-db";
 
-export default function Home() {
-  const meetings = getMeetings();
+export default async function Home() {
+  const meetings = await getMeetings();
   const totalMeetings = meetings.length;
   const latestMeeting = meetings[meetings.length - 1] ?? null;
 
