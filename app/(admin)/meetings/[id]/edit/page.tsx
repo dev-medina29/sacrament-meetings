@@ -1,9 +1,19 @@
-export default function NewMeetingPage() {
-  return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-50">
-      <h1 className="text-2xl font-semibold text-gray-700">
-        Create Meeting — Coming in Week 04
-      </h1>
-    </div>
-  );
+import { notFound } from "next/navigation";
+import MeetingForm from "@/components/MeetingForm";
+import { getMeetingById } from "@/lib/meetings-db";
+import { updateMeeting } from "@/lib/actions";
+
+interface EditMeetingPageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function EditMeetingPage({ params }: EditMeetingPageProps) {
+  const { id } = await params;
+  const meeting = await getMeetingById(Number(id));
+
+  if (!meeting) {
+    notFound();
+  }
+
+  return <MeetingForm mode="edit" action={updateMeeting} meeting={meeting} />;
 }
